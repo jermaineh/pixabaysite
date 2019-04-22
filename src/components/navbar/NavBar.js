@@ -8,13 +8,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 
 
-const NavBar = () => <AppBar position="static" style={{marginBottom: 15 }} >
+const NavBar = () => <AppBar position="static" style={{marginBottom: 15, backgroundColor: 'black' }} >
     <Toolbar >
     <IconButton  color="inherit" aria-label="Menu">
         <MenuIcon />
     </IconButton>
      <Typography variant="h6" color="inherit" >
-        PixaBay Image Finder
+        Easy Image Finder
     </Typography>
   
     </Toolbar>

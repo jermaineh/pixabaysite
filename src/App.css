@@ -1,3 +1,14 @@
 .App {
     text-align: center;
 }
+
+.MuiGridListTileBar-subtitle-186 span {
+    overflow: scroll;
+}
+
+@media only screen and (max-width: 480px) {
+    .MuiGridListTileBar-title-185,
+    .MuiGridListTileBar-subtitle-186 {
+        display: none;
+    }
+}

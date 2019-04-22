@@ -12,17 +12,24 @@ class Search extends Component {
         amount: 15,
         apiUrl: 'https://pixabay.com/api',
         apiKey: '12251266-2c3b192180737f27f5db644c4',
-        images: []
+        images: [],
+        
     }
     onTextChange = (e) => {
-        this.setState({[e.target.name]: e.target.value}, ()=> {
-            axios.get(`${this.state.apiUrl}/?key=${this.state.apiKey}&q=${this.state.searchText}&image_type=photo&per_page=${this.state.amount}`)
+        const val= e.target.value;
+        this.setState({[e.target.name]: val}, ()=> {
+            if(val=== '') {
+                this.setState({images: []});  //clears the screen to blank if search bar is blank
+            } else {
+                axios.get(`${this.state.apiUrl}/?key=${this.state.apiKey}&q=${this.state.searchText}&image_type=photo&per_page=${this.state.amount}`)
                 .then(res => this.setState({images: res.data.hits}))
                 .catch(err => console.log(err));
+            }
+           
         })
     }  // will try to change this to a async await function later on!!
 
-    onAmountChange = (e,) => this.setState({ amount: e.target.value });  //a function to handle the change of the number of images to show
+    onAmountChange = (e) => this.setState({ amount: e.target.value, refresh: true }, this.forceUpdate);  //a function to handle the change of the number of images to show
     render() {
         console.log(this.state) // just for debuging get rid of this line later on
         return (
@@ -53,8 +60,9 @@ class Search extends Component {
                   <MenuItem value={50}>fifty</MenuItem>
                 </Select>
                 <br />
+                <hr/>
                 {this.state.images.length > 0? (                   //ternary operator saying if images exist then show them else do nothing. 
-                    <ImageResults images={this.state.images} />    // can probably do this with the && statements, also look to place this in another section maybe
+                    <ImageResults images={this.state.images } refresh={this.state.refresh}/>    // can probably do this with the && statements, also look to place this in another section maybe
                 ) : null}                                          
             </div>
         );
