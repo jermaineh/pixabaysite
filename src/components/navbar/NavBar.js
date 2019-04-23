@@ -8,7 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 
 
-const NavBar = () => <AppBar position="static" style={{marginBottom: 15, backgroundColor: 'black' }} >
+const NavBar = () => <AppBar position="sticky" style={{marginBottom: 50, backgroundColor: 'white', color: 'black' }} >
     <Toolbar >
     <IconButton  color="inherit" aria-label="Menu">
         <MenuIcon />

@@ -14,7 +14,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 class ImageResults extends Component {
     state = {
         open: false,
-        currentImg: ''   // used to set the state of the Dialog/Detailed picture view
+        currentImg: '' 
+        // used to set the state of the Dialog/Detailed picture view
     }
    handleOpen = img => {
         this.setState({open: true, currentImg: img})
@@ -25,17 +26,17 @@ class ImageResults extends Component {
     
     render() {
         let imageListContent;
-        const images  = this.props.images;
+        const images  = this.props.images;  // this was passed in from the props of Search.js
         
         if(images) {
             
-            console.log(`${images[0].largeImageURL}`)
+           // console.log(`this is data:${images[0].largeImageURL}`)
             imageListContent = (
                 <div className="container-fluid">
-                <GridList cols={5} style={{width: 'auto', height: 'auto', position: 'center'}} className='App'>
-                {images.map(img =>(
+                <GridList cols={4} style={{width: 'auto', height: 'auto', position: 'center'}} className='container-fluid'>
+                {images.map(img =>( 
                     <GridListTile
-                        
+                        className='container-fluid'
                         title={img.tags}
                         key={img.id}
                         
@@ -54,6 +55,8 @@ class ImageResults extends Component {
                 ))}
                 
                 </GridList>
+                <br /><br/>
+                
                 </div>
             );
         } else {
@@ -70,7 +73,7 @@ class ImageResults extends Component {
                     open={this.state.open}
                     >
                      <DialogTitle id="alert-dialog-slide-title">
-                        Detailed View
+                       <a href={this.state.currentImg} target='blank'> full page </a>
                     </DialogTitle>
                     <img src={this.state.currentImg} alt='' style={{ width: '100%' }} />
                     <DialogActions>
