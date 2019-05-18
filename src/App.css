@@ -2,6 +2,17 @@
     text-align: center;
 }
 
+.hovereffect:hover {
+    font-size: 100px;
+    padding: 10%;
+    color: rgb(247, 245, 245);
+    transition: 0.5s;
+}
+
+footer {
+    margin-top: 15rem;
+}
+
 .MuiGridListTileBar-subtitle-186 span {
     overflow: scroll;
 }
