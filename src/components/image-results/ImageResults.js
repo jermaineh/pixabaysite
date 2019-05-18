@@ -14,7 +14,7 @@ class ImageResults extends Component {
   state = {
     open: false,
     currentImg: "",
-    cols: 4
+    cols: 3
     // used to set the state of the Dialog/Detailed picture view
   };
   handleOpen = (img, tags) => {
@@ -50,7 +50,7 @@ class ImageResults extends Component {
                   actionIcon={
                     <IconButton
                       color="default"
-                      style={{ color: "rgba(255, 255, 255, 0.54)" }}
+                      style={{ color: "rgba(186, 39, 35, 0.88)" }}
                       onClick={() =>
                         this.handleOpen(img.largeImageURL, img.tags)
                       }
@@ -69,9 +69,6 @@ class ImageResults extends Component {
     } else {
       imageListContent = null; //sets the screen to blank if we delete all text from the searchbar
     }
-
-    console.log(this.props.images[0].tags);
-    console.log(this.state.currentImg);
 
     return (
       <div>
